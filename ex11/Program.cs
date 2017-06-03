@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MyLib;
 
 namespace ex11
@@ -13,13 +9,20 @@ namespace ex11
         {
             while (true)
             {
-                var count = Ask.Num("Введите число k: ");
-                var places = new int[count];
+                var count = Ask.Num("Введите число k: ");       
+                var places = new int[count];                                // инициализация массива-карты
 
-                for (var i = 0; i < count; i++)
+                for (var i = 0; i < count; i++)                             // заполнение массива-карты
                     places[i] = Ask.Num("Введите место для символа: ");
+                
+                Console.WriteLine();
 
-                var choise = new Menu("Что вы хотели бы сделать: ", "Зашифровать", "Дешифровать");
+                string cur = Ask.Word("Введите слово: "),                   // хранение данного слова
+                    crypting,                                               // зашифрованный вариант слова
+                    decripting;                                             // расшифрованный вариант слова
+                if (cur.Length % count > 0)                                 // заполнение пробелами справа
+                    cur = cur.PadRight(cur.Length + (count - cur.Length % count));
+                
 
 
                 OC.Stay();
